@@ -1,0 +1,17 @@
+{% extends "polls/wrapper.html" %}
+
+    {% block content %}
+        <div class="alert alert-primary" role="alert">
+        {% if latest_question_list %}
+        <div class="container">
+         <div class="row">
+                {% for question in latest_question_list %}
+                    <div class="col-md-2" style="background-color: #7abaff"> <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a> </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+        </div>
+    {% endblock %}
